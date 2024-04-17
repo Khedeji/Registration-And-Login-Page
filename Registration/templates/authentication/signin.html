@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h3, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <title>Document</title>
+</head>
+<body><div class="cont"><div class="messages">
+    {% for message in messages  %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"> &times; </span>
+        </button>
+        </div>
+    {% endfor %}</div>
+    <h3>Sign In</h3>
+    <form action="/signin" method="post">
+    {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        <br>
+
+        <label for="pass1">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter your Password" required>
+        <br>
+        
+        <button class="bbb" type="submit"><b>Login</b></button>
+        <button type="button"><a href="/">back</a></button>
+
+    </form></div>
+</body>
+</html>
